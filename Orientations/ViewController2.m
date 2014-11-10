@@ -7,7 +7,8 @@
 //
 
 #import "ViewController2.h"
-#import <objc/objc.h>
+#import <objc/runtime.h>
+#import <objc/message.h>
 
 @interface ViewController2 ()
 
@@ -18,12 +19,12 @@
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    
+
+    // данные хаки работают только в симуляторе - на девайсе не работают :(
     [[UIApplication sharedApplication] setStatusBarOrientation: UIInterfaceOrientationPortrait animated:NO];
-    
     if ([[UIDevice currentDevice] respondsToSelector:@selector(setOrientation:)])
     {
-        objc_msgSend([UIDevice currentDevice], @selector(setOrientation:), UIInterfaceOrientationPortrait);
+        [[UIDevice currentDevice] performSelector:@selector(setOrientation:) withObject:@(UIInterfaceOrientationPortrait) afterDelay:0];
     }
     
 }
