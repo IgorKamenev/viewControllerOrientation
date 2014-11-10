@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NavViewController.h
 //  Orientations
 //
 //  Created by Igor Kamenev on 10/11/14.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface NavViewController : UINavigationController
 
 @end
-
